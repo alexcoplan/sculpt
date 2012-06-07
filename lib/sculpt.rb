@@ -18,7 +18,6 @@ module SculptHelpers
 end
 
 # Some string additions from mynyml/unindent on github
-# so small it's not worth the gem.
 
 class String
   def unindent
