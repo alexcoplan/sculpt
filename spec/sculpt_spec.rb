@@ -9,7 +9,7 @@ describe Sculpt do
             Sculpt.pretty = true
         end
         
-        it "should create a pretty bare bones HTML doc" do
+        it "should create a pretty printed bare bones HTML doc" do
             res = Sculpt.make_doc do
                 p "test"
             end
