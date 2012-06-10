@@ -25,11 +25,11 @@ class Sculpture < ElementContainer
     
     def p(text='',attrs = {},&block)
         # necessary to override the Kernel#p method
-        add_tag Tag.new(:p, text, attrs, &block)
+        add_tag Tag.new(:p, text.unindent.lstrip, attrs, &block)
     end
     
     def puts(text)
-        @elements << Static.new(text.unindent)
+        @elements << Static.new(text.unindent.lstrip)
     end
     
     def pbr(text)
