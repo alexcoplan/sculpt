@@ -1,7 +1,7 @@
 require 'spec_helper'
 
-## this spec is for testing generic sculpt features
-## for tag speces see sculpture_spec
+# this spec is for testing generic sculpt features
+# for tag specs see sculpture_spec
 
 describe Sculpt do
     context "with pretty print enabled" do
