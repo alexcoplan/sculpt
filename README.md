@@ -233,7 +233,16 @@ Then make sure you can get the tests to run (it uses [rspec](http://rspec.info/)
 	cd sculpt
 	rspec
 	
-If you find a bug that isn't all that obscure, consider adding a test for it. If you're adding a feature, then definitely add at least one test, but please let me know first if it's something big.
+To run code against the source, you need to be inside the Sculpt directory, and add the option `-Ilib` to include the `lib` directory. You can then call `require 'sculpt'` from inside your script to load Sculpt.
+
+For example, when inside the sculpt directory, you can run this to use sculpt in irb:
+
+    irb -Ilib
+    > require 'sculpt'
+
+You can then run your own code against the source (and modify the source).
+
+If you happen to find bugs (and they're not really obscure), I would recommend adding a test once you've fixed it. Also, for features, definitely add at least one test. If it's a big feature you're considering, just let me know before hand.
 
 ## Proper Documentation
 
