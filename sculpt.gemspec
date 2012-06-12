@@ -15,4 +15,3 @@ Gem::Specification.new do |s|
     s.email = 'lexy0202@gmail.com'
     s.homepage = 'http://alexcoplan.co.uk/sculpt'
 end
-    
