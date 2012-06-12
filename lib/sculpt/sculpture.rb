@@ -49,17 +49,18 @@ class Sculpture < ElementContainer
             add_tag Tag.new(:script, attrs)
         end
     end
-
-    def stylesheet(name)
+    
+    private
+    def _stylesheet(name)
         attrs = {type:"text/css", rel:"stylesheet", href:name}
         add_tag Tag.new(:link, attrs)
     end
 
-    def stylesheets(*args)
+    def css(*args)
         if args[0].respond_to? :to_a
-            args[0].each {|sheet| stylesheet sheet}
+            args[0].each {|sheet| _stylesheet sheet}
         end
-        args.each {|sheet| stylesheet sheet}
+        args.each {|sheet| _stylesheet sheet}
     end
         
     def a(text, href = '', ahash = {}, &block)

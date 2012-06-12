@@ -1,7 +1,7 @@
 Gem::Specification.new do |s|
     s.name = 'sculpt'
-    s.version = '0.0.0'
-    s.date = '2012-06-09'
+    s.version = '0.1'
+    s.date = '2012-06-10'
     s.summary = 'An HTML5 generator in Ruby.'
     s.description = 
     "Sculpt is an HTML5 generator in Ruby.
@@ -13,6 +13,6 @@ Gem::Specification.new do |s|
     
     s.authors = ['Alex Coplan']
     s.email = 'lexy0202@gmail.com'
-    s.homepage = 'http://github.com/alexcoplan/sculpt'
+    s.homepage = 'http://alexcoplan.co.uk/sculpt'
 end
     

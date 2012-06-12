@@ -33,9 +33,17 @@ describe Sculpture do
     
     it "should handle js files as arguments" do
         gen = "<script type=\"text/javascript\" src=\""
-        str = gen+"chunky\"></script>" + gen+"bacon\"></script>"
+        str = gen+"chunky.js\"></script>" + gen+"bacon.js\"></script>"
         makes str do
-            js "chunky", "bacon"
+            js "chunky.js", "bacon.js"
+        end
+    end
+    
+    it "should handle css files as arguments" do
+        gen = "<link type=\"text/css\" rel=\"stylesheet\" href=\""
+        str = gen +"shiny.css\">" + gen + "styles.css\">"
+        makes str do
+            css "shiny.css", "styles.css"
         end
     end
     
