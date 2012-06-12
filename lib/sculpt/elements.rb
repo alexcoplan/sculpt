@@ -23,6 +23,7 @@ class Tag < ElementContainer
             @inline = text
             @elements << text
             @text = ''
+            @attrs = attrs
             return self
         else
             @text = text

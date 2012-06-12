@@ -11,7 +11,7 @@ module SculptHelpers
     
     def special_attr(att, val, extra)
         attrs = {att => val}
-        attrs.merge(extra) if extra.kind_of? Hash
+        return attrs.merge(extra) if extra.kind_of? Hash
         attrs
     end
 end

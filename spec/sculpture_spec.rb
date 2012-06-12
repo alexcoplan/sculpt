@@ -96,4 +96,18 @@ describe Sculpture do
             paragraph"
         end
     end
+    
+    # these test cases are the result of previous bugs:
+    
+    it "should handle attributes with methods that use special_attr (like img)" do
+        makes "<img src=\"my_lolcat.png\" id=\"lulz\">" do
+            img "my_lolcat.png", id: :lulz
+        end
+    end
+    
+    it "should let you use attributes with inline tags (tag passed as argument)" do
+        makes "<div id=\"mydiv\"><img src=\"da_pic.png\"></div>" do
+            div img("da_pic.png"), id: :mydiv
+        end
+    end
 end
