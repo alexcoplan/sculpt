@@ -48,9 +48,7 @@ end
 # => <!DOCTYPE html><html><p>Chunky bacon</p></html>
 ```
 
-Basic usage:
-
-__Nesting Tags__
+### Nesting Tags
 
 Sculpt uses blocks to nest tags.
 
@@ -64,7 +62,7 @@ end
 # => <div><p>A paragraph in a div</p></div>
 ```
 
-__Adding attributes__
+### Adding attributes
 
 ```ruby
 Sculpt.render do
@@ -76,7 +74,7 @@ end
 # => <div id="mydiv"><p style="color:blue">This is a blue paragraph inside #mydiv</p></div>
 ```
 
-__Handy Constructors__
+### Handy Constructors
 
 When you call a method that isn't otherwise defined inside a Sculpt block, the method name will be assumed to be a tag, and the arguments like so:
 
@@ -110,7 +108,7 @@ Sculpt.render do
 end
 ```
        
-__Other ways of embedding tags__
+### Other ways of embedding tags
 
 Inside a Sculpt block, you can call any normal method with `_s` appended to the end, and it will return that element as a string. This is useful if you want to combine multiple tags, but you want to do it in one line.
 
