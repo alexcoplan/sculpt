@@ -2,11 +2,9 @@
 
 Sculpt is an HTML generation tool in Ruby.
 
-It's still very early in development, so if you're interested play around with it and try to break it!
+It's still very early in development, so have a play around and try to break it.
 
 ## Installation
-
-Sculpt will shortly be on RubyGems (and I'll update this), and of course the command will be:
 
     gem install sculpt
 
