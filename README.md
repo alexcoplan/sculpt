@@ -12,7 +12,7 @@ Sculpt will shortly be on RubyGems (and I'll update this), and of course the com
 
 ## How it works
 
-Sculpt leverages two powerful features of Ruby to make it work; dynamic methods, and blocks. In a Sculpt block, you generate the name of a tag by calling a method with that name. If Sculpt doesn't have a pre-defined method for the tag that you want to use, it will generate a tag for you anyway, based on the method you tried to call. To nest tags, you use blocks.
+Sculpt leverages two powerful features of Ruby to make it work; dynamic methods, and blocks. In a Sculpt block, you add a tag by calling a method with the desired tag name. If Sculpt doesn't have a pre-defined method for the tag that you want to use, it will generate a tag for you anyway, based on the method you tried to call. To nest tags, you use blocks.
 
 ## Usage
 
