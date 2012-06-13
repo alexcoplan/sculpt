@@ -218,7 +218,7 @@ And that will save the output of your script to the file `my_html.html`.
 
 ## Contributing
 
-Currently, it's just [me](twitter.com/#!/alexcoplan), but if anyone would like to contribute, that would be great.
+Currently, it's just [me](http://twitter.com/#!/alexcoplan), but if anyone would like to contribute, that would be great.
 
 Just clone the repo in the normal way:
 
