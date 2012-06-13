@@ -5,7 +5,7 @@ Gem::Specification.new do |s|
     s.summary = 'An HTML generator in Ruby.'
     s.description = 
     "Sculpt is an HTML generator in Ruby.
-    Syntax is everything"
+    Syntax is everything."
     
     s.files = Dir.glob("{lib}/**/*")
     s.require_path = 'lib'
