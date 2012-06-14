@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
     s.name = 'sculpt'
-    s.version = '0.1'
+    s.version = '0.1.01'
     s.date = '2012-06-10'
     s.summary = 'An HTML generator in Ruby.'
     s.description = 
