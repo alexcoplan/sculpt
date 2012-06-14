@@ -3,32 +3,25 @@ class Tag < ElementContainer
     
     attr_accessor :name, :text, :attrs, :singelton, :inline
     
-    def initialize(name,text = '', attrs = {},&block)
+    def initialize(name, text = '', attrs = {}, &block)
         @name = name
         @attrs = {}
         @elements = []
         @inline = false
+        @text = ''
         
-        if text.kind_of?(Hash)
-            if attrs.kind_of? Tag
-                @inline = attrs
-                @elements << attrs
-                return self
-            else
-                @attrs = attrs
-                @attrs.merge!(text)
-                @text = '' # otherwise stays nil
-            end
-        elsif text.kind_of?(Tag)
+        if text.kind_of? Tag
             @inline = text
             @elements << text
-            @text = ''
-            @attrs = attrs
+            @attrs.merge!(attrs) if attrs.kind_of? Hash
             return self
-        else
+        elsif text.kind_of? Hash
+            @attrs.merge!(text)
+        elsif text.kind_of? String
             @text = text
-            @attrs = attrs
         end
+        
+        @attrs.merge!(attrs) if attrs.kind_of? Hash
         
         if block_given?
             @elements += elements_from_block(&block)
