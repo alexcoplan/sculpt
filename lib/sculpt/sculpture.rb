@@ -25,7 +25,12 @@ class Sculpture < ElementContainer
     
     def p(text='',attrs = {},&block)
         # necessary to override the Kernel#p method
-        add_tag Tag.new(:p, text.unindent.lstrip, attrs, &block)
+        if text.kind_of? String
+            txt = text.unindent.lstrip # for multi-line strings
+        else
+            txt = text
+        end
+        add_tag Tag.new(:p, txt, attrs, &block)
     end
     
     def puts(text)
