@@ -13,5 +13,5 @@ Gem::Specification.new do |s|
     
     s.authors = ['Alex Coplan']
     s.email = 'lexy0202@gmail.com'
-    s.homepage = 'http://github.com/alexcoplan/sculpt'
+    s.homepage = 'http://alexcoplan.co.uk/sculpt'
 end
