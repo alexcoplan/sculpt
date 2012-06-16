@@ -43,7 +43,7 @@ end
 Sculpt.render_doc do
     p "Chunky bacon."
 end
-# => <!DOCTYPE html><html><p>Chunky bacon</p></html>
+# => <!DOCTYPE html><html><p>Chunky bacon.</p></html>
 ```
 
 ### Nesting Tags
@@ -126,18 +126,18 @@ end
 # => <div><img src="lolcat.png"></div>
 ```
 
-As pretty as the no-bracket syntax is, sometimes you will need them (esp. when working with nested tags). For example, if you wanted to give the id "mydiv" to a div containing an img, you might do something like this:
+As pretty as the no-bracket syntax is, sometimes you will need them (especially when working with nested tags). For example, if you wanted to give the id "mydiv" to a div containing an img, you might do something like this:
 
 ```ruby
 div img "lolcat.png", id: :mydiv
-# actually gives: <div><img src="my_lolcat.png" id="mydiv"></div>
+# actually gives: <div><img src="lolcat.png" id="mydiv"></div>
 ```
 
 Ruby assumes you're still in the img method, and sends the hash to the img method instead of div, so we simply separate the img method with brackets:
 
 ```ruby
-div img("da_pic.png"), id: :mydiv
-# => <div id="mydiv"><img src="da_pic.png"></div>
+div img("lolcat.png"), id: :mydiv
+# => <div id="mydiv"><img src="lolcat.png"></div>
 ```
 
 ## An example
@@ -155,14 +155,14 @@ Sculpt.render_doc do
         css "css/main.css", "css/sculpt.css"
     end
     body do
-        h1 "Sculpt is an awesome HTML generation tool"
-        p "Thanks to Ruby, look how sweet the syntax is!"
-       
+        h1 "Sculpt is an HTML generation tool in Ruby."
+        p "Thanks to Ruby, look how neat the syntax is!"
+
         a "Link", "http://www.google.co.uk"
-       
+
         ul ["Apple","Orange","Banana"]
         ol ["One","Two","Three"]
-       
+
         p "Blue paragraph", style:"color:blue"
         div id: :mydiv do
             span "This span is in a div."
@@ -183,8 +183,8 @@ The output:
 <link type="text/css" rel="stylesheet" href="css/sculpt.css">
 </head>
 <body>
-<h1>Sculpt is an awesome HTML generation tool</h1>
-<p>Thanks to Ruby, look how sweet the syntax is!</p>
+<h1>Sculpt is an HTML generation tool in Ruby.</h1>
+<p>Thanks to Ruby, look how neat the syntax is!</p>
 <a href="http://www.google.co.uk">Link</a>
 <ul>
 <li>Apple</li>
@@ -210,7 +210,7 @@ The Sculpt class itself has one option: `Sculpt.pretty`. This determines whether
 
 ## Dumping to HTML
 
-You can convert your Sculpt code to HTMl very easily. Just use something like this:
+You can convert your Sculpt code to HTML very easily. Just use something like this:
 
     ruby my_sculpt_script.rb > my_html.html
 
