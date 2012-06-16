@@ -39,11 +39,27 @@ describe Sculpture do
         end
     end
     
+    it "should handle js files as an array" do
+        gen = "<script type=\"text/javascript\" src=\""
+        str = gen+"chunky.js\"></script>" + gen+"bacon.js\"></script>"
+        makes str do
+            js ["chunky.js", "bacon.js"]
+        end
+    end
+    
     it "should handle css files as arguments" do
         gen = "<link type=\"text/css\" rel=\"stylesheet\" href=\""
         str = gen +"shiny.css\">" + gen + "styles.css\">"
         makes str do
             css "shiny.css", "styles.css"
+        end
+    end
+    
+    it "should handle css files as an array" do
+        gen = "<link type=\"text/css\" rel=\"stylesheet\" href=\""
+        str = gen +"shiny.css\">" + gen + "styles.css\">"
+        makes str do
+            css ["shiny.css", "styles.css"]
         end
     end
     

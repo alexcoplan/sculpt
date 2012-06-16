@@ -47,25 +47,33 @@ class Sculpture < ElementContainer
     def doctype
         @elements << Static.new('<!DOCTYPE html>') # enforce HTML5
     end
+    
+    private
+    def _js(src)
+        attrs = {type:"text/javascript",src:src}
+        add_tag Tag.new(:script, attrs)
+    end
 
     def js(*args)
-        args.each do |arg|
-            attrs = {type:"text/javascript", src:arg}
-            add_tag Tag.new(:script, attrs)
+        if args[0].respond_to? :to_a
+            args[0].each {|script| _js script }
+        else
+            args.each {|script| _js script }
         end
     end
     
     private
-    def _stylesheet(name)
-        attrs = {type:"text/css", rel:"stylesheet", href:name}
+    def _css(src)
+        attrs = {type:"text/css", rel:"stylesheet", href:src}
         add_tag Tag.new(:link, attrs)
     end
 
     def css(*args)
         if args[0].respond_to? :to_a
-            args[0].each {|sheet| _stylesheet sheet}
+            args[0].each {|sheet| _css sheet}
+        else
+            args.each {|sheet| _css sheet}
         end
-        args.each {|sheet| _stylesheet sheet}
     end
         
     def a(text, href = '', ahash = {}, &block)
