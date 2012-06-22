@@ -113,6 +113,30 @@ describe Sculpture do
         end
     end
     
+    it "should support funky classes" do
+        makes "<div class=\"header\">Content</div>" do
+            div.header "Content"
+        end
+    end
+    
+    it "should support funky classes with anchors" do
+        makes "<a href=\"here.html\" class=\"big\">Follow me</a>" do
+            a.big "Follow me", "here.html"
+        end
+    end
+    
+    it "should support funky classes with images" do
+        makes "<img src=\"klobig_speck.png\" class=\"framed\">" do
+            img.framed "klobig_speck.png"
+        end
+    end
+    
+    it "should support lists with funky classes and attributes" do
+        makes "<ul class=\"nav\" width=\"300\"><li>Home</li><li>About</li><li>Contact</li></ul>" do
+            ul.nav ["Home","About","Contact"], width: 300
+        end
+    end
+    
     # these test cases are the result of previous bugs:
     
     it "should handle attributes with methods that use special_attr (like img)" do

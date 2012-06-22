@@ -10,6 +10,11 @@ class Tag < ElementContainer
         @inline = false
         @text = ''
         
+        set_up(text, attrs, &block)
+    end
+    
+    def set_up(text = '', attrs = {}, &block)
+        # this method can be called from either the class hack or the init.
         if text.kind_of? Tag
             @inline = text
             @elements << text
@@ -26,7 +31,7 @@ class Tag < ElementContainer
         if block_given?
             @elements += elements_from_block(&block)
         end
-        @singleton = is_singleton? name
+        @singleton = is_singleton? @name
     end
     
     def generate_html(ugly = false)
@@ -48,6 +53,34 @@ class Tag < ElementContainer
         end
         return "#{open}\n#{html}#{close}" if pp and not inline
         return open + html + close
+    end
+    
+    def method_missing(m, *args, &block)
+        # this is the class hack.
+        # it's quite cool.
+        # it basically let's you call tag.class and have class be set as the class for tag.
+        # it requires a bit of extra work elsewhere (as arguments get passed to this method instead).
+        @attrs[:class] = m
+        case @name
+        when :a
+            attrs = special_attr(:href, args[1], args[2])
+            set_up(args[0], attrs, &block)
+        when :img
+            attrs = special_attr(:src, args[0], args[1])
+            set_up(attrs)
+        when :ul,:ol
+            t = args[0]
+            if t.kind_of? Array or t.kind_of? Range
+                t.each do |item|
+                    @elements << Tag.new(:li,item)
+                end
+                set_up('',args[1])
+            else
+                set_up(args[0],args[1], &block)
+            end
+        else
+            set_up(args[0], args[1], &block)
+        end
     end
 end
 

@@ -1,7 +1,7 @@
 class Sculpture < ElementContainer
     #
     # This is a container class for elements.
-    # It responds to all the method calls in a block that generates HTMl.
+    # It responds to all the method calls in a block that generates HTML.
     #
     
     include SculptHelpers
@@ -48,6 +48,9 @@ class Sculpture < ElementContainer
         @elements << Static.new('<!DOCTYPE html>') # enforce HTML5
     end
     
+    # multi constructors below.
+    # just a warning, multi constructors do NOT support funky classes.
+    
     private
     def _js(src)
         attrs = {type:"text/javascript",src:src}
@@ -55,7 +58,7 @@ class Sculpture < ElementContainer
     end
 
     def js(*args)
-        if args[0].respond_to? :to_a
+        if args[0].kind_of? Array
             args[0].each {|script| _js script }
         else
             args.each {|script| _js script }
@@ -69,20 +72,22 @@ class Sculpture < ElementContainer
     end
 
     def css(*args)
-        if args[0].respond_to? :to_a
+        if args[0].kind_of? Array
             args[0].each {|sheet| _css sheet}
         else
             args.each {|sheet| _css sheet}
         end
     end
+    
+    # special constructors below
         
-    def a(text, href = '', ahash = {}, &block)
+    def a(text = '', href = '', ahash = {}, &block)
         # funky constructor for easier linking
         attrs = special_attr(:href, href, ahash)
         add_tag Tag.new(:a, text, attrs, &block)
     end
     
-    def img(src, ahash = {})
+    def img(src = '', ahash = {})
         # funky img constructor
         attrs = special_attr(:src, src, ahash)
         add_tag Tag.new(:img, attrs)
