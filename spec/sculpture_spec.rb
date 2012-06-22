@@ -137,6 +137,12 @@ describe Sculpture do
         end
     end
     
+    it "should let you chain funky classes!" do
+        makes "<div class=\"important section\">Only the chunkiest cut of bacon you've ever seen.</div>" do
+            div.important.section "Only the chunkiest cut of bacon you've ever seen."
+        end
+    end
+    
     # these test cases are the result of previous bugs:
     
     it "should handle attributes with methods that use special_attr (like img)" do

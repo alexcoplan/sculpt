@@ -32,6 +32,8 @@ class Tag < ElementContainer
             @elements += elements_from_block(&block)
         end
         @singleton = is_singleton? @name
+        
+        self # needed for funky classes
     end
     
     def generate_html(ugly = false)
@@ -60,7 +62,9 @@ class Tag < ElementContainer
         # it's quite cool.
         # it basically let's you call tag.class and have class be set as the class for tag.
         # it requires a bit of extra work elsewhere (as arguments get passed to this method instead).
-        @attrs[:class] = m
+        @attrs[:class] = "" unless @attrs[:class]
+        @attrs[:class] += " " unless @attrs[:class].empty?
+        @attrs[:class] += m.to_s
         case @name
         when :a
             attrs = special_attr(:href, args[1], args[2])
