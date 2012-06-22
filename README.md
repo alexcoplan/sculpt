@@ -1,8 +1,6 @@
 # Sculpt
 
-Sculpt is an HTML generation tool in Ruby.
-
-It's still very early in development, so have a play around and try to break it.
+Sculpt is an HTML generation tool in Ruby. It's still very early in development, so have a play around and try to break it.
 
 ## Recent Updates
 
@@ -11,7 +9,7 @@ __22/06/12__ Just added support for funky classes. You know how you select an el
 ```ruby
 Sculpt.render do
 	p.greeting "Hi!" # => <p class="greeting">Hi!</p>
-	ul.nav ["Home","About","Contact"] # => <ul class="nav"><li>Home</li><li>About</li><li>Contact</li>
+	ul.nav ["Home","About","Contact"] # => <ul class="nav"><li>Home</li><li>About</li><li>Contact</li></ul>
 end
 ```
 Next planned addition will be chaining of those dynamic class methods.
