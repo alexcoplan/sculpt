@@ -1,6 +1,6 @@
 # Sculpt Changelog
 
-Take a look here for updates on what's changed/is changing in Sculpt.
+Take a look here for updates on what's changed/changing in Sculpt.
 
 ## 23/06/12 - v0.1.03
 
@@ -13,3 +13,8 @@ end
 ```
 
 Just like CSS! - Aren't dynamic methods great?
+
+## Planned Changes
+
+ - HTML escaping.
+ - Add support for some kind of special syntax for IDs (that will be difficult).
