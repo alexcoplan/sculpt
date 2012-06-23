@@ -70,6 +70,23 @@ end
 # => <div id="mydiv"><p style="color:blue">This is a blue paragraph inside #mydiv</p></div>
 ```
 
+### Funky Classes
+
+```ruby
+Sculpt.render do
+	# old way of setting classes:
+	p "Chunky Bacon", class: :info # => <p class="info">Chunky Bacon</p>
+	
+	# new way of setting classes:
+	p.info "Chunky Bacon" # => <p class="info">Chunky Bacon</p>
+	
+	# you can also chain them:
+	a.big.shiny "Follow Me", "here" # => <a href="here" class="big shiny">Follow Me</a>
+	
+	# just like css selectors.
+end
+```
+
 ### Handy Constructors
 
 When you call a method that isn't otherwise defined inside a Sculpt block, the method name will be assumed to be a tag, and the arguments like so:
@@ -218,9 +235,9 @@ And that will save the output of your script to the file `my_html.html`.
 
 Currently, it's just [me](http://twitter.com/#!/alexcoplan), but if anyone would like to contribute, that would be great.
 
-Just clone the repo in the normal way:
+Just fork or clone the repo:
 
-	git clone https://github.com/alexcoplan/sculpt.git
+	git clone https://github.com/user/sculpt.git
 
 Then make sure you can get the tests to run (it uses [rspec](http://rspec.info/)).
 
