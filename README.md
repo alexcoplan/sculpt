@@ -222,7 +222,7 @@ The output:
 
 ## Options
 
-The Sculpt class itself has one option: `Sculpt.pretty`. This determines whether or not to print the HTML with line-breaks (in sensible places), or without any line-breaks. By default, `pretty` is on, but you may wish to have it generate HTML in a compressed format, in which case leave it off.
+The Sculpt class itself has one option: `Sculpt.pretty`. This determines whether or not to print the HTML with line-breaks (in sensible places), or without any line-breaks. By default, `pretty` is on, but you may wish to have it generate HTML in a compressed format, in which case turn it off.
 
 ## Dumping to HTML
 
