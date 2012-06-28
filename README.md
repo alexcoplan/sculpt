@@ -180,7 +180,7 @@ Sculpt.render_doc do
         ol ["One","Two","Three"]
 
         p "Blue paragraph", style:"color:blue"
-        div id: :mydiv do
+        div.mydiv do
             span "This span is in a div."
         end            
     end
@@ -213,7 +213,7 @@ The output:
 <li>Three</li>
 </ol>
 <p style="color:blue">Blue paragraph</p>
-<div id="mydiv">
+<div class="mydiv">
 <span>This span is in a div.</span>
 </div>
 </body>
