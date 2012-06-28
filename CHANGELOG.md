@@ -13,7 +13,7 @@ Sculpt.render do
 end
 
 # is the same as
-```ruby
+
 Sculpt.render('p "hi"')
 ```
 
