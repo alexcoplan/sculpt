@@ -16,14 +16,20 @@ module SculptHelpers
     end
 end
 
-# plus some string additions from mynyml/unindent on github
+# some awesome string additions. 
 
 class String
-  def unindent
-    indent = self.split("\n").select {|line| !line.strip.empty? }.map {|line| line.index(/[^\s]/) }.compact.min || 0
-    self.gsub(/^[[:blank:]]{#{indent}}/, '')
-  end
-  def unindent!
-    self.replace(self.unindent)
-  end
+    # this one from mynyml/unindent on github
+    def unindent
+        indent = self.split("\n").select {|line| !line.strip.empty? }.map {|line| line.index(/[^\s]/) }.compact.min || 0
+        self.gsub(/^[[:blank:]]{#{indent}}/, '')
+    end
+    def unindent!
+        self.replace(self.unindent)
+    end
+    
+    # this awesome one by me
+    def to_proc
+        eval "Proc.new do\n#{self}\nend"
+    end
 end
