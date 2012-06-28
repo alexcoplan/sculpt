@@ -4,7 +4,9 @@ Sculpt is an HTML generation tool in Ruby. It's still very early in development,
 
 ## Installation
 
-    gem install sculpt
+```bash
+gem install sculpt
+```
 
 ## How it works
 
