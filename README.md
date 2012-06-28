@@ -238,9 +238,9 @@ And that will save the output of your script to the file `my_html.html`.
 
 Currently, it's just [me](http://twitter.com/#!/alexcoplan), but if anyone would like to contribute, that would be great.
 
-Just fork or clone the repo:
+Just fork and clone the repo:
 
-	git clone https://github.com/user/sculpt.git
+	git clone git://github.com/user/sculpt.git
 
 Then make sure you can get the tests to run (it uses [rspec](http://rspec.info/)).
 
