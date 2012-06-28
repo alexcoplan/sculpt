@@ -17,7 +17,7 @@ end
 Sculpt.render('p "hi"')
 ```
 
-Thanks to a handy helper, String#to_proc, which you can find in `lib/sculpt/sculpt_helpers.rb`.
+Thanks to a handy helper, `String#to_proc`, which you can find in `lib/sculpt/sculpt_helpers.rb`.
 
 ## 23/06/12 - v0.1.03
 
