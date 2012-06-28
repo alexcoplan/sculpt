@@ -43,6 +43,7 @@ Sculpt.render_doc do
 end
 # => <!DOCTYPE html><html><p>Chunky bacon.</p></html>
 ```
+*Note: as of v0.1.04, you can supply the sculpt block as a string of code instead of a block.* 
 
 ### Nesting Tags
 

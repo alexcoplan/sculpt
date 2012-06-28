@@ -9,11 +9,17 @@ describe Sculpt do
             Sculpt.pretty = true
         end
         
-        it "should create a pretty printed bare bones HTML doc" do
+        stdres = "<!DOCTYPE html>\n<html>\n<p>test</p>\n</html>"
+        
+        it "should create a bare bones HTML doc from a block" do
             res = Sculpt.make_doc do
                 p "test"
             end
-            res.should eq "<!DOCTYPE html>\n<html>\n<p>test</p>\n</html>"
+            res.should eq stdres
+        end
+        
+        it "should create a bare bones HTML doc from a string of code" do
+            res = Sculpt.make_doc('p "test"').should eq stdres
         end
     end
     
@@ -22,11 +28,17 @@ describe Sculpt do
             Sculpt.pretty = false
         end
         
-        it "should create a bare bones doc with no newlines" do
+        stdres = "<!DOCTYPE html><html><p>test</p></html>"
+        
+        it "should create a bare bones doc" do
             res = Sculpt.make_doc do
                 p "test"
             end
-            res.should eq "<!DOCTYPE html><html><p>test</p></html>"
+            res.should eq stdres
+        end
+        
+        it "should create a bare bones doc from a string of code" do
+            Sculpt.make_doc('p "test"').should eq stdres
         end
     end
 end

@@ -31,24 +31,36 @@ class Sculpt
         @pretty
     end
 
-    def self.render_doc(&block)
-        puts self.make_doc(&block)
+    def self.render_doc(str = '', &block)
+        puts self.make_doc(str,&block)
     end
 
-    def self.make_doc(&block)
+    def self.make_doc(str = '', &block)
+        if str.length > 0
+            proc = str.to_proc
+        else
+            proc = block
+        end
+        
         self.make do
             doctype
-            html(&block) 
+            html(&proc) 
         end
     end
 
-    def self.render(&block)
-        puts self.make(&block)
+    def self.render(str = '', &block)
+        puts self.make(str,&block)
     end
 
-    def self.make(&block)
+    def self.make(str = '', &block)
+        if str.length > 0
+            proc = str.to_proc
+        else
+            proc = block
+        end
+        
         result = Sculpture.new
-        result.instance_eval(&block)
+        result.instance_eval(&proc)
         result.generate_html
     end
 end
