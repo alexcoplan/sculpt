@@ -25,43 +25,43 @@ class Sculpt
 
     class << self
         attr_accessor :pretty
-    end
-
-    def self.pretty?
-        @pretty
-    end
-
-    def self.render_doc(str = '', &block)
-        puts self.make_doc(str,&block)
-    end
-
-    def self.make_doc(str = '', &block)
-        if str.length > 0
-            proc = str.to_proc
-        else
-            proc = block
+        
+        def pretty? # just because that looks nicer
+            @pretty
         end
         
-        self.make do
-            doctype
-            html(&proc) 
+        def render_doc(str = '', &block)
+            puts self.make_doc(str,&block)
         end
-    end
 
-    def self.render(str = '', &block)
-        puts self.make(str,&block)
-    end
+        def make_doc(str = '', &block)
+            if str.length > 0
+                proc = str.to_proc
+            else
+                proc = block
+            end
 
-    def self.make(str = '', &block)
-        if str.length > 0
-            proc = str.to_proc
-        else
-            proc = block
+            self.make do
+                doctype
+                html(&proc) 
+            end
         end
-        
-        result = Sculpture.new
-        result.instance_eval(&proc)
-        result.generate_html
+
+        def render(str = '', &block)
+            puts self.make(str,&block)
+        end
+
+        def make(str = '', &block)
+            if str.length > 0
+                proc = str.to_proc
+            else
+                proc = block
+            end
+
+            result = Sculpture.new
+            result.instance_eval(&proc)
+            result.generate_html
+        end
     end
 end
 
