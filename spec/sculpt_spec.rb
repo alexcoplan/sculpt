@@ -12,10 +12,9 @@ describe Sculpt do
         stdres = "<!DOCTYPE html>\n<html>\n<p>test</p>\n</html>"
         
         it "should create a bare bones HTML doc from a block" do
-            res = Sculpt.make_doc do
+            Sculpt.make_doc do
                 p "test"
-            end
-            res.should eq stdres
+            end.should eq stdres
         end
         
         it "should create a bare bones HTML doc from a string of code" do
@@ -31,10 +30,9 @@ describe Sculpt do
         stdres = "<!DOCTYPE html><html><p>test</p></html>"
         
         it "should create a bare bones doc" do
-            res = Sculpt.make_doc do
+            Sculpt.make_doc do
                 p "test"
-            end
-            res.should eq stdres
+            end.should eq stdres
         end
         
         it "should create a bare bones doc from a string of code" do
