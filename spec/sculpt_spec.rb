@@ -19,7 +19,7 @@ describe Sculpt do
         end
         
         it "should create a bare bones HTML doc from a string of code" do
-            res = Sculpt.make_doc('p "test"').should eq stdres
+            Sculpt.make_doc('p "test"').should eq stdres
         end
     end
     
