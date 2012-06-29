@@ -16,7 +16,7 @@ module SculptHelpers
     end
 end
 
-# some awesome string additions. 
+# some string additions. 
 
 class String
     # this one from mynyml/unindent on github
@@ -28,7 +28,7 @@ class String
         self.replace(self.unindent)
     end
     
-    # this awesome one by me
+    # this one by me
     def to_proc
         eval "Proc.new do\n#{self}\nend"
     end
