@@ -14,6 +14,13 @@ module SculptHelpers
         return attrs.merge(extra) if extra.kind_of? Hash
         attrs
     end
+    
+    def attr_replace(a)
+        if a.is_a? Symbol and Sculpt.smart_attrs?
+            return a.to_s.gsub('_','-')
+        end
+        a
+    end
 end
 
 # some string additions. 

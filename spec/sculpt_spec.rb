@@ -39,4 +39,34 @@ describe Sculpt do
             Sculpt.make_doc('p "test"').should eq stdres
         end
     end
+    
+    context "with smart attrs disabled" do
+        before do
+            Sculpt.smart_attrs = false
+        end
+        
+        it "should not replace symbols with underscores with dashes" do
+            Sculpt.make do
+                p "This paragraph", data_is: :notsome
+            end.should eq "<p data_is=\"notsome\">This paragraph</p>"
+        end
+    end
+    
+    context "with smart attrs enabled" do
+        before do
+            Sculpt.smart_attrs = true
+        end
+        
+        it "should replace symbols with underscores with dashes" do
+            Sculpt.make do
+                p "This paragraph", data_is: :awesome
+            end.should eq "<p data-is=\"awesome\">This paragraph</p>"
+        end
+        
+        it "should not replace underscores in values, just keys" do
+            Sculpt.make do
+                p "Quack", data_said_by: :a_duck
+            end.should eq "<p data-said-by=\"a_duck\">Quack</p>"
+        end
+    end
 end

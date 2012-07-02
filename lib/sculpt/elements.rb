@@ -42,7 +42,7 @@ class Tag < ElementContainer
         n = @name.to_s
         open = "<#{n}"
         @attrs.each do |k, v|
-            open += " #{k}=\"#{v}\""
+            open += " #{attr_replace(k)}=\"#{v}\""
         end
         open += '>'
         return open if @singleton

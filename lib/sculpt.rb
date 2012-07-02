@@ -24,10 +24,14 @@ class Sculpt
     #
 
     class << self
-        attr_accessor :pretty
+        attr_accessor :pretty, :smart_attrs
         
         def pretty? # just because that looks nicer
             @pretty
+        end
+        
+        def smart_attrs? # and here
+            @smart_attrs
         end
         
         def render_doc(str = '', &block)
@@ -66,3 +70,4 @@ class Sculpt
 end
 
 Sculpt.pretty = true # pretty print by default
+Sculpt.smart_attrs = true # replace underscores in syms acting as attr keys (iss#2)
