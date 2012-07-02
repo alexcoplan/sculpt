@@ -104,9 +104,11 @@ Sculpt has some convenient tag constructors, which make working with certain tag
 Sculpt.render do
     # the img constructor takes two args. the src, and the other attributes as a hash.
     img "my_lolcat.jpg", some: "attributes"
+	# => <img src="my_lolcat.jpg" some="attributes">
 
     # the a constructor takes up to 4 (link text, href, attributes, and a block)
     a "Link text", "my_page.html", some: "attributes"
+	# => <a href="my_page.html" some="attributes">Link text</a>
 
     # the js and css constructors load js/css files in for you by argument, e.g:
     js "file1.js", "file2.js", "file3.js"
