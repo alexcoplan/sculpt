@@ -4,7 +4,7 @@ Take a look here for updates on what's changed/changing in Sculpt.
 
 ## 22/07/12 - v0.1.05
 
-New option: `Sculpt.smart_attrs` in response to issue #2.
+New option: `Sculpt.smart_attrs` in response to [issue #2](http://github.com/alexcoplan/sculpt/issues/2).
 
 This option is true by default, and will replace underscores with hyphens in any attribute **key** that is also a **symbol**.
 
