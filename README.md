@@ -257,7 +257,3 @@ For example, when inside the sculpt directory, you can run this to use sculpt in
 You can then run your own code against the source (and modify the source).
 
 If you happen to find bugs (and they're not really obscure), I would recommend adding a test once you've fixed it. Also, for features, definitely add at least one test. If it's a big feature you're considering, just let me know before hand.
-
-## Proper Documentation
-
-I'm working on it...

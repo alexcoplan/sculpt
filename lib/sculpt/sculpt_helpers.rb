@@ -23,7 +23,7 @@ module SculptHelpers
     end
 end
 
-# some string additions. 
+# general core extensions below
 
 class String
     # this one from mynyml/unindent on github
