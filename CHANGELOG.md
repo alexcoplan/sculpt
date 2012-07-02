@@ -8,7 +8,7 @@ New option: `Sculpt.smart_attrs` in response to issue #2.
 
 This option is true by default, and will replace underscores with hyphens in any attribute **key** that is also a **symbol**.
 
-The reasoning behind this is that you can't have a symbol with hyphens in, but hyphens are often used in attributes keys (e.g. data-foo). So, in order to preserve the nice sym-based hash syntax introduced in Ruby 1.9 (`key: "value"` instead of `"key" => "value"`), Sculpt will now automatically replace underscores in your attribute keys with hyphens **only if they are syms**.
+The reasoning behind this is that symbols can't have hyphens in, but hyphens are often used in attribute keys (e.g. data-foo). So, in order to preserve the nice sym-based hash syntax introduced in Ruby 1.9 (`key: "value"` instead of `"key" => "value"`), Sculpt will now automatically replace underscores in your attribute keys with hyphens **only if they are syms**.
 
 This is important as it means you can still have keys with underscores in, just by using a string instead of a symbol.
 
