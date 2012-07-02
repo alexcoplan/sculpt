@@ -15,18 +15,18 @@ class Tag < ElementContainer
     
     def set_up(text = '', attrs = {}, &block)
         # this method can be called from either the class hack or the init.
-        if text.kind_of? Tag
+        if text.is_a? Tag
             @inline = text
             @elements << text
-            @attrs.merge!(attrs) if attrs.kind_of? Hash
+            @attrs.merge!(attrs) if attrs.is_a? Hash
             return self
-        elsif text.kind_of? Hash
+        elsif text.is_a? Hash
             @attrs.merge!(text)
-        elsif text.kind_of? String
+        elsif text.is_a? String
             @text = text
         end
         
-        @attrs.merge!(attrs) if attrs.kind_of? Hash
+        @attrs.merge!(attrs) if attrs.is_a? Hash
         
         if block_given?
             @elements += elements_from_block(&block)
@@ -51,7 +51,7 @@ class Tag < ElementContainer
         html = ''
         @elements.each do |element|
             html += element.generate_html
-            html += "\n" if pp unless inline or element.kind_of? Static
+            html += "\n" if pp unless inline or element.is_a? Static
         end
         return "#{open}\n#{html}#{close}" if pp and not inline
         return open + html + close
@@ -74,7 +74,7 @@ class Tag < ElementContainer
             set_up(attrs)
         when :ul,:ol
             t = args[0]
-            if t.kind_of? Array or t.kind_of? Range
+            if t.is_an? Array or t.is_af? Range
                 t.each do |item|
                     @elements << Tag.new(:li,item)
                 end

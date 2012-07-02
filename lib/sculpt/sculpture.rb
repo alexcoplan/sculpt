@@ -25,7 +25,7 @@ class Sculpture < ElementContainer
     
     def p(text='',attrs = {},&block)
         # necessary to override the Kernel#p method
-        if text.kind_of? String
+        if text.is_a? String
             txt = text.unindent.lstrip # for multi-line strings
         else
             txt = text
@@ -58,7 +58,7 @@ class Sculpture < ElementContainer
     end
 
     def js(*args)
-        if args[0].kind_of? Array
+        if args[0].is_an? Array
             args[0].each {|script| _js script }
         else
             args.each {|script| _js script }
@@ -72,7 +72,7 @@ class Sculpture < ElementContainer
     end
 
     def css(*args)
-        if args[0].kind_of? Array
+        if args[0].is_an? Array
             args[0].each {|sheet| _css sheet}
         else
             args.each {|sheet| _css sheet}
@@ -98,7 +98,7 @@ class Sculpture < ElementContainer
         # constructor for lists from arrays. e.g. => ul [1,2,3]
         tag = Tag.new(list_type)
         tag.attrs = attrs
-        if tarr.kind_of? Array or tarr.kind_of? Range
+        if tarr.is_an? Array or tarr.is_a? Range
             tarr.each do |item|
                 tag.elements << Tag.new(:li, item)
             end

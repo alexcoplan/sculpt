@@ -11,7 +11,7 @@ module SculptHelpers
     
     def special_attr(att, val, extra)
         attrs = {att => val}
-        return attrs.merge(extra) if extra.kind_of? Hash
+        return attrs.merge(extra) if extra.is_a? Hash
         attrs
     end
     
@@ -38,5 +38,11 @@ class String
     # this one by me
     def to_proc
         eval "Proc.new do\n#{self}\nend"
+    end
+end
+
+class Object
+    def is_an?(type) # my type checks *will* have correct grammar
+        is_a?(type)
     end
 end
