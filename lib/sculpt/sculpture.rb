@@ -41,6 +41,12 @@ class Sculpture < ElementContainer
         # adds raw text plus a line break
         @elements << Static.new(text + '<br>')
     end
+    
+    # sinatra overrides
+    
+    def head(&block)
+        @elements << Tag.new(:head, &block)
+    end
         
     # other constructors here
 
