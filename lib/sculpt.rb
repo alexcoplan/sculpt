@@ -1,28 +1,26 @@
 #
 # Sculpt
 #
-# An HTMl5 generator in Ruby.
+# An HTMl generator in Ruby.
 # Syntax is everything.
 #
 
-class ElementContainer
-    attr_accessor :elements
+module Sculpt
+    class ElementContainer
+        attr_accessor :elements
     
-    def initialize
-        @elements = []
+        def initialize
+            @elements = []
+        end
     end
 end
 
 require_relative 'sculpt/sculpt_helpers'
 require_relative 'sculpt/elements'
 require_relative 'sculpt/sculpture'
+require_relative 'sculpt/sculpt_template'
 
-class Sculpt
-    #
-    # The Sculpt class is used externally.
-    # Most of the time this is the only class users will play with.
-    #
-
+module Sculpt
     class << self
         attr_accessor :pretty, :smart_attrs
         
@@ -33,12 +31,24 @@ class Sculpt
         def smart_attrs? # and here
             @smart_attrs
         end
-        
-        def render_doc(str = '', &block)
-            puts self.make_doc(str,&block)
+
+        def make(a = '', &block)
+            if a.is_a? String and a.length > 0
+                proc = a.to_proc
+            else
+                proc = block
+            end
+
+            result = Sculpture.new
+            result.instance_eval(&proc)
+            result.generate_html
         end
 
-        def make_doc(str = '', &block)
+        def render(str = '', &block)
+            puts self.make(str,&block)
+        end
+
+        def doc(str = '', &block)
             if str.length > 0
                 proc = str.to_proc
             else
@@ -51,22 +61,34 @@ class Sculpt
             end
         end
 
-        def render(str = '', &block)
-            puts self.make(str,&block)
+        def load(sym)
+            str = IO.read(sym)
+            Sculpt.make(str)
         end
 
-        def make(str = '', &block)
-            if str.length > 0
-                proc = str.to_proc
-            else
-                proc = block
-            end
+        def template(&p)
+            Sculpt::Templating::Template.new(doc: false, &p)
+        end
 
-            result = Sculpture.new
-            result.instance_eval(&proc)
-            result.generate_html
+        def template_doc(&p)
+            Sculpt::Templating::Template.new(doc: true, &p)
         end
     end
+end
+
+# a few shortcut methods
+
+def sculpt(a, &block)
+    return Sculpt.load(a) if a.is_a? Symbol unless block_given?
+    Sculpt.make(a, &block)
+end
+
+def template(&p)
+    Sculpt.template(&p)
+end
+
+def template_doc(&p)
+    Sculpt.template_doc(&p)
 end
 
 Sculpt.pretty = true # pretty print by default

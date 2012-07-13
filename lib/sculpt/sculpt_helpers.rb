@@ -1,25 +1,35 @@
-module SculptHelpers
-    def elements_from_block(&block)
-        result = Sculpture.new
-        result.instance_eval(&block)
-        result.elements
-    end
-    
-    def is_singleton? tag
-        [:area, :base, :br, :col, :command, :embed, :hr, :img, :input, :link, :meta, :param, :source].include? tag
-    end
-    
-    def special_attr(att, val, extra)
-        attrs = {att => val}
-        return attrs.merge(extra) if extra.is_a? Hash
-        attrs
-    end
-    
-    def attr_replace(a)
-        if a.is_a? Symbol and Sculpt.smart_attrs?
-            return a.to_s.gsub('_','-')
+module Sculpt
+    module Helpers
+        def elements_from_block(&block)
+            result = Sculpture.new
+            result.instance_eval(&block)
+            result.elements
         end
-        a
+
+        def is_singleton? tag
+            [:area, :base, :br, :col, :command, :embed, :hr, :img, :input, :link, :meta, :param, :source].include? tag
+        end
+
+        def special_attr(att, val, extra)
+            attrs = {att => val}
+            return attrs.merge(extra) if extra.is_a? Hash
+            attrs
+        end
+
+        def attr_replace(a)
+            if a.is_a? Symbol and Sculpt.smart_attrs?
+                return a.to_s.gsub('_','-')
+            end
+            a
+        end
+        
+        def placehold(p)
+            if p.is_a? Sculpt::Templating::Placeholder
+                p
+            elsif p.is_a? Symbol
+                Sculpt::Templating::Placeholder.new(p)
+            end
+        end
     end
 end
 

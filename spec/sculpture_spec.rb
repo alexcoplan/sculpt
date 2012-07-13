@@ -2,7 +2,7 @@ require 'spec_helper'
 
 # here we keep the spec for tags
 
-describe Sculpture do
+describe Sculpt::Sculpture do
     before do
         Sculpt.pretty = false # makes it less fiddly for testing tags.
     end
@@ -154,6 +154,22 @@ describe Sculpture do
     it "should let you use attributes with inline tags (tag passed as argument)" do
         makes "<div id=\"mydiv\"><img src=\"da_pic.png\"></div>" do
             div img("da_pic.png"), id: :mydiv
+        end
+    end
+    
+    it "should let you use inline tags and funky classes together" do
+        makes "<div class=\"main\"><p>woof</p></div>" do
+            div.main do
+                p "woof"
+            end
+        end
+    end
+    
+    it "should let you pass blocks to inline tags" do
+        makes "<div><span><p>Klobig Speck</p></span></div>" do
+            div span do
+                p "Klobig Speck"
+            end
         end
     end
 end
