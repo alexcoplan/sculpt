@@ -62,7 +62,7 @@ module Sculpt
         end
 
         def load(sym)
-            str = IO.read(sym)
+            str = IO.read(sym.to_s)
             Sculpt.make(str)
         end
 

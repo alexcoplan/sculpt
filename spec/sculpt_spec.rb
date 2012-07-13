@@ -20,6 +20,29 @@ describe Sculpt do
         it "should create a bare bones HTML doc from a string of code" do
             Sculpt.doc('p "test"').should eq stdres
         end
+
+        it "should load a file with sculpt shortcut" do
+            sculpt(fsym "p.rb").should == "<p>in a file</p>"
+        end
+
+        it "should load a file with Sculpt.load" do
+            Sculpt.load(fstr "load.rb").doctest "
+            <!DOCTYPE html>
+            <html>
+            <head>
+            <title>sculpt does files</title>
+            </head>
+            <body>
+            <div class=\"sarcasm\">
+            <p class=\"bro\">Have you heard?!</p>
+            <p class=\"brah\">What?</p>
+            <p class=\"bro\">Sculpt does files!</p>
+            <p class=\"brah\">No way man!</p>
+            <p class=\"bro\">Yeah brah, totally rad!</p>
+            </div>
+            </body>
+            </html>"
+        end
     end
     
     context "without pretty print enabled" do
