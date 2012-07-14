@@ -1,7 +1,7 @@
 #
 # Sculpt
 #
-# An HTMl generator in Ruby.
+# An HTML generator in Ruby.
 # Syntax is everything.
 #
 
@@ -61,6 +61,10 @@ module Sculpt
             end
         end
 
+        def render_doc(str = '', &block)
+            puts self.doc(str, &block)
+        end
+
         def load(sym)
             str = IO.read(sym.to_s)
             Sculpt.make(str)
@@ -78,7 +82,7 @@ end
 
 # a few shortcut methods
 
-def sculpt(a, &block)
+def sculpt(a = '', &block)
     return Sculpt.load(a) if a.is_a? Symbol unless block_given?
     Sculpt.make(a, &block)
 end

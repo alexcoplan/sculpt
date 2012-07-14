@@ -114,6 +114,19 @@ describe Sculpt::Templating do
             <p>bye</p>
             </span>"
         end
+
+        it "should render a file into a single part template" do
+            t = template do
+                div.bacon do
+                    render
+                end
+            end
+
+            t.load(fsym "p.rb").doctest "
+            <div class=\"bacon\">
+            <p>in a file</p>
+            </div>"
+        end
     end
     
     context "without pretty print enabled" do

@@ -30,7 +30,7 @@ module Sculpt
         
         class SHandler
             # another sculpture wrapper for individaul template assignments
-            def initialize(sections,sculpture)
+            def initialize(sections, sculpture)
                 @sculpture = Marshal.load(Marshal.dump(sculpture)) # deep copy
                 @sections = {}
                 sections.each do |s|
@@ -113,9 +113,19 @@ module Sculpt
                 @doc = opts[:doc]
             end
 
-            def make(&block)
+            def render(&block)
+                puts make(&block)
+            end
+
+            def make(str = '', &block)
+                if str.length > 0 and not block_given?
+                    proc = str.to_proc
+                else
+                    proc = block
+                end
+
                 h = SHandler.new(@sections,@sculpture.clone)
-                h.instance_exec(&block)
+                h.instance_exec(&proc)
                 out = h.generate_html
                 if @doc
                     out += "\n" if Sculpt.pretty?
@@ -123,6 +133,10 @@ module Sculpt
                 else
                     out
                 end
+            end
+
+            def load(path)
+                make IO.read(path.to_s)
             end
         end 
     end
