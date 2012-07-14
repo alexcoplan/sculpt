@@ -25,6 +25,10 @@ describe Sculpt do
             sculpt(fsym "p.rb").should == "<p>in a file</p>"
         end
 
+        it "should load a ruby file without the .rb" do
+            sculpt(fsym "p").should == "<p>in a file</p>"
+        end
+
         it "should load a file with Sculpt.load" do
             Sculpt.load(fstr "load.rb").doctest "
             <!DOCTYPE html>

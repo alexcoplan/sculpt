@@ -15,10 +15,10 @@ module Sculpt
     end
 end
 
-require_relative 'sculpt/sculpt_helpers'
+require_relative 'sculpt/helpers'
 require_relative 'sculpt/elements'
 require_relative 'sculpt/sculpture'
-require_relative 'sculpt/sculpt_template'
+require_relative 'sculpt/templating'
 
 module Sculpt
     class << self
@@ -71,8 +71,8 @@ module Sculpt
             Sculpt.make sc_read(sym)
         end
 
-        def template(&p)
-            Sculpt::Templating::Template.new(doc: false, &p)
+        def template(f = '', &p)
+            Sculpt::Templating::Template.new(doc: false, file: f, &p)
         end
 
         def template_doc(&p)
@@ -88,8 +88,8 @@ def sculpt(a = '', &block)
     Sculpt.make(a, &block)
 end
 
-def template(&p)
-    Sculpt.template(&p)
+def template(f = '', &p)
+    Sculpt.template(f, &p)
 end
 
 def template_doc(&p)

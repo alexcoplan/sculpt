@@ -143,13 +143,15 @@ describe Sculpt::Templating do
             </span>"
         end
 
-        # it "should create a single part template from a file" do
-        #     t = template fsym("temp.rb")
-        #     t.make { p "bar" }.doctest "
-        #     <div class=\"foo\">
-        #     <p>bar</p>
-        #     </div>"
-        # end
+        it "should create a single part template from a file" do
+            t = template fsym("temp")
+            t.make { p "bar" }.doctest "
+            <div class=\"this_is\">
+            <span class=\"in_a_file\">
+            <p>bar</p>
+            </span>
+            </div>"
+        end
     end
     
     context "without pretty print enabled" do

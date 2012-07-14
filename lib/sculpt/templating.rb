@@ -1,7 +1,7 @@
 module Sculpt
     module Templating                
         class THandler 
-            include Sculpt::Helpers
+            include Helpers
 
             attr_accessor :sculpture
             
@@ -95,7 +95,15 @@ module Sculpt
         end
         
         class Template
-            def initialize(opts = {}, &proc)
+            include Helpers
+
+            def initialize(opts = {}, &block)
+                if block_given?
+                    proc = block
+                elsif opts[:file]
+                    proc = sc_read(opts[:file]).to_proc
+                end
+
                 @sections = []
                 params = proc.parameters.collect { |p| p[1] }
                 if params.count > 1
