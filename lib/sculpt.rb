@@ -22,6 +22,8 @@ require_relative 'sculpt/sculpt_template'
 
 module Sculpt
     class << self
+        include Helpers
+
         attr_accessor :pretty, :smart_attrs
         
         def pretty? # just because that looks nicer
@@ -66,8 +68,7 @@ module Sculpt
         end
 
         def load(sym)
-            str = IO.read(sym.to_s)
-            Sculpt.make(str)
+            Sculpt.make sc_read(sym)
         end
 
         def template(&p)

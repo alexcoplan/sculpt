@@ -115,7 +115,7 @@ describe Sculpt::Templating do
             </span>"
         end
 
-        it "should render a file into a single part template" do
+        it "should inject a file into a single part template" do
             t = template do
                 div.bacon do
                     render
@@ -128,7 +128,7 @@ describe Sculpt::Templating do
             </div>"
         end
 
-        it "should render a file into a multi part template" do
+        it "should inject a file into a multi part template" do
             t = template do |a, b|
                 div.bret render a
                 span.jemaine render b
@@ -142,6 +142,14 @@ describe Sculpt::Templating do
             <p>dead</p>
             </span>"
         end
+
+        # it "should create a single part template from a file" do
+        #     t = template fsym("temp.rb")
+        #     t.make { p "bar" }.doctest "
+        #     <div class=\"foo\">
+        #     <p>bar</p>
+        #     </div>"
+        # end
     end
     
     context "without pretty print enabled" do

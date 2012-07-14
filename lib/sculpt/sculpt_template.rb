@@ -1,8 +1,8 @@
 module Sculpt
     module Templating                
-        class THandler
+        class THandler 
             include Sculpt::Helpers
-            
+
             attr_accessor :sculpture
             
             def initialize

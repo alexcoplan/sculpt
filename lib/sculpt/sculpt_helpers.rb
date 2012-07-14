@@ -30,6 +30,18 @@ module Sculpt
                 Sculpt::Templating::Placeholder.new(p)
             end
         end
+
+        def sc_read(p)
+            # this is a file reading helpers
+            # it means you don't have to put .rb on the end of syms (yay)
+            path = p.to_s # support syms
+            begin
+                IO.read(path)
+            rescue Errno::ENOENT => e
+                return IO.read(path[0..-3]) if str.length > 3 and str[-3..-1] == ".rb"
+                raise e
+            end
+        end
     end
 end
 
