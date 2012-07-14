@@ -127,6 +127,21 @@ describe Sculpt::Templating do
             <p>in a file</p>
             </div>"
         end
+
+        it "should render a file into a multi part template" do
+            t = template do |a, b|
+                div.bret render a
+                span.jemaine render b
+            end
+
+            t.load(fstr "multi.rb").doctest "
+            <div class=\"bret\">
+            <p>the humans are</p>
+            </div>
+            <span class=\"jemaine\">
+            <p>dead</p>
+            </span>"
+        end
     end
     
     context "without pretty print enabled" do
